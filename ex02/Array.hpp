@@ -17,7 +17,7 @@ class Array
 		}
 		Array<T>(unsigned int size)
 		{
-			this->_data = new T[size];
+			this->_data = new T[size + 1];
 			this->_size = size;
 		}
 		~Array<T>()
@@ -27,24 +27,30 @@ class Array
 
 		Array<T>(const Array &array)
 		{
-			int	i;
+			unsigned int	i;
 
 			this->_data = new T[array.size()];
 			this->_size = array.size();
-			i = -1;
-			while (++i < size)
-				this->_data[i] = array->_data[i];
+			i = 0;
+			while (i < this->_size)
+			{
+				this->_data[i] = array._data[i];
+				i++;
+			}
 		}
 
 		Array<T> &operator = (const Array &array)
 		{
-			int	i;
+			unsigned int	i;
 
 			this->_data = new T[array.size()];
 			this->_size = array.size();
-			i = -1;
-			while (++i < size)
-				this->_data[i] = array->_data[i];
+			i = 0;
+			while (i < this->_size)
+			{
+				this->_data[i] = array._data[i];
+				i++;
+			}
 		}
 
 		T &operator [] (unsigned int i)
@@ -54,7 +60,7 @@ class Array
 			return this->_data[i];
 		};
 
-		unsigned int size()
+		unsigned int size() const
 		{
 			return _size;
 		}
