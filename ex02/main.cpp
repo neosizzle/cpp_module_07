@@ -67,6 +67,14 @@ int main()
 	{
 		std::cerr << e.what() << '\n';
 	}
+		try{
+		Array<int> arrerr(123);
+		std::cout << arrerr[-1];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	print("\n=============================");
 	print("=======ARRAY WRITE TESTS=======");
 	print("orignal :");
@@ -80,6 +88,36 @@ int main()
 	for (size_t i = 0; i < 4; i++)
 		std::cout << (arrstr[i]) << "\n";
 	print("\n=============================");
+	print("=======DEEP COPY TESTS=======");
+	Array<std::string> arrog(4);
+	arrog[0] = "somebody once told me,";
+	arrog[1] = "the world is gonna roll me";
+	arrog[2] = "i aint the sharpest tool";
+	arrog[3] = "in the shed";
+
+	Array<std::string> arrcp(arrog);
+	print("orignal initial:");
+	for (size_t i = 0; i < 4; i++)
+		std::cout << (arrog[i]) << "\n";
+	print("");
+	print("copy initial:");
+	for (size_t i = 0; i < 4; i++)
+		std::cout << (arrcp[i]) << "\n";
+	print("");
+	arrog[0] = "she was looking kinda dumb,";
+	arrog[1] = "with her finger and her thumb,";
+	arrog[2] = "with a shape of an l";
+	arrog[3] = "on her forehead";
+	print("orignal after change:");
+	for (size_t i = 0; i < 4; i++)
+		std::cout << (arrog[i]) << "\n";
+	print("");
+	print("copy after change:");
+	for (size_t i = 0; i < 4; i++)
+		std::cout << (arrcp[i]) << "\n";
+	print("");
+	print("\n=============================");
+	
 	return 0;
 }
 
